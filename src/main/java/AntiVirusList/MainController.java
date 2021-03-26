@@ -72,6 +72,18 @@ public class MainController {
 
 
     }
+    
+    @GetMapping("coinmarketcap")
+    public ResponseEntity<String> binance(@RequestParam String info) throws IOException {
+        if(info.equals("BTC")){
+            //Just test evrry possiblitty
+//            getUrlContentsCMC(info);
+//             getUrlContents(info);
+            System.out.println("granted");
+
+        }
+        return ResponseEntity.ok("GARANTED DATA FROM BINANCE");
+    }
 
 
 //    public void getDataFromApi(String exchange) throws IOException {
