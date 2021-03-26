@@ -5,26 +5,38 @@
     <title>Title</title>
 </head>
 <body>
+<div style="background-color:gray;color:white;padding:20px;border-radius: 25px;">
+    <h2>EUROPE 2021 </h2>
+    <marquee width="100%" direction="left" height="100px" scrollamount="12">
+        WELCOME TO ARS EXCHANGE   - TEST VERSION
+    </marquee>
+    <marquee width="100%" direction="left" height="100px">
+        MONITOR HERE LIVE PRICE OF CRYPTO COINS   - TEST VERSION
+    </marquee>
+
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
 <form>
-    Input String <br/>
+    Exchange Name :  <br/>
     <input type="text" name="tall1"/><br/>
 
 
-    Difficulty Set By User : <br/>
-    <input type="text" name="tall4"/><br/>
+<!--    Number Of Packet <br/>-->
+<!--    <input type="text" name="tall4"/><br/>-->
 
 
     <br/>
-    <input type="radio" name="mathType" value="pluss"/> String To Binary <br/>
+    <input type="radio" name="mathType" value="pluss"/> Get Price<br/>
     <br/>
 
-    <br/>
-    <input type="radio" name="mathType1" value="pluss1"/> Binary to String <br/>
-    <br/>
 
-    <input type="submit" value="Convert"/>
+
+    <input type="submit" value="Show Pirce"/>
     <div>
-        <p th:text="test"> </p><p th:text="${svar}"></p>
+        <p th:text="${svar}"></p>
     </div>
 
 
