@@ -108,6 +108,23 @@ public class MainController {
 //        in.close();
 
 //    }
+    
+     private static String getUrlContentsCMC(String theUrl) throws IOException {
+         // COINMARKTCAP IT HAS PRIVATE KEY TO ACCESS
+        URL uri = new URL("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
+        URLConnection ec = uri.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                ec.getInputStream(), "UTF-8"));
+        String inputLine;
+        StringBuilder a = new StringBuilder();
+        while ((inputLine = in.readLine()) != null)
+            a.append(inputLine);
+        in.close();
+
+        System.out.println(a.toString());
+        return a.toString();
+
+    }
 
     private static String getUrlContents(String theUrl) throws IOException {
         URL uri = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
