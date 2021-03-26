@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 @Controller
 
 public class MainController {
+    //COINMARKETECAP PRIVATE API KEY
     static String apiKey = "b4666977-739e-47bd-8ad6-02ad69bfd85f";
 
 
@@ -74,6 +75,7 @@ public class MainController {
 
 
     }
+    // RESTFUL ENDPOINT TO RETRIVE DATA
     @GetMapping("coinmarketcap")
     public ResponseEntity<String> binance(@RequestParam String info) throws IOException {
         if(info.equals("BTC")){
@@ -81,7 +83,7 @@ public class MainController {
             getUrlContents(info);
 
             System.out.println("GARANTED , BITCOIN PRICE IN DOLLAR");
-            // MTSHID TO BREEAK THE INCOMING OBJECT TEXT
+
             return ResponseEntity.ok(getUrlContents(info));
 
 
@@ -97,29 +99,6 @@ public class MainController {
     }
 
 
-
-//    public void getDataFromApi(String exchange) throws IOException {
-//
-//        URL url = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
-//        URLConnection con = url.openConnection();
-//
-//        con.setDoOutput(true); // we want the response
-//        con.setRequestProperty("Cookie", "myCookie=test123");
-//        con.connect();
-//
-//        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//
-//        StringBuilder response = new StringBuilder();
-//        String inputLine;
-//
-//        String newLine = System.getProperty("line.separator");
-//        while ((inputLine = in.readLine()) != null) {
-//            response.append(inputLine + newLine);
-//        }
-//
-//        in.close();
-
-//    }
 
 
     private static String getUrlContents(String theUrl) throws IOException {
@@ -200,4 +179,27 @@ public class MainController {
 
 
 
+
+//    public void getDataFromApi(String exchange) throws IOException {
+//
+//        URL url = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
+//        URLConnection con = url.openConnection();
+//
+//        con.setDoOutput(true); // we want the response
+//        con.setRequestProperty("Cookie", "myCookie=test123");
+//        con.connect();
+//
+//        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//
+//        StringBuilder response = new StringBuilder();
+//        String inputLine;
+//
+//        String newLine = System.getProperty("line.separator");
+//        while ((inputLine = in.readLine()) != null) {
+//            response.append(inputLine + newLine);
+//        }
+//
+//        in.close();
+
+//    }
 
