@@ -13,6 +13,8 @@ import java.io.IOException;
 public class RestControler {
     
     // TODO THIS IS REST INFO CLASS ITS AN API FOR REQUESTS AND RESPONSE AS PRICE AND MORE
+    
+    // FOR NOW FIRST TOP 5 
 
     @GetMapping("coinmarketcap")
     public ResponseEntity<String> binance(@RequestParam String info) throws IOException {
