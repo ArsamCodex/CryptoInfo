@@ -11,6 +11,8 @@ import java.io.IOException;
 @RestController
 @RequestMapping("api")
 public class RestControler {
+    
+    // TODO THIS IS REST INFO CLASS ITS AN API FOR REQUESTS AND RESPONSE AS PRICE AND MORE
 
     @GetMapping("coinmarketcap")
     public ResponseEntity<String> binance(@RequestParam String info) throws IOException {
