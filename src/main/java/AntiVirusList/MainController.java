@@ -13,6 +13,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,6 +64,7 @@ public class MainController {
 
                     makeAPICall(uri,paratmers);
                     System.out.println(makeAPICall(uri,paratmers));
+                    model.addAttribute("svar",getUrlContentsCMC(tall1));
 
                 default:
                     break;
@@ -72,18 +74,28 @@ public class MainController {
 
 
     }
-    
     @GetMapping("coinmarketcap")
     public ResponseEntity<String> binance(@RequestParam String info) throws IOException {
         if(info.equals("BTC")){
-            //Just test evrry possiblitty
 //            getUrlContentsCMC(info);
-//             getUrlContents(info);
-            System.out.println("granted");
+            getUrlContents(info);
+
+            System.out.println("GARANTED , BITCOIN PRICE IN DOLLAR");
+            // MTSHID TO BREEAK THE INCOMING OBJECT TEXT
+            return ResponseEntity.ok(getUrlContents(info));
+
 
         }
-        return ResponseEntity.ok("GARANTED DATA FROM BINANCE");
+        else if(info.equals("ETH")){
+            getUrlContentsETH(info);
+            System.out.println("ETHEREUM DATA GARANTED");
+            return ResponseEntity.ok(getUrlContentsETH(info));
+
+
+        }
+        return ResponseEntity.ok("ITS 200 OK EVERYTHINGDS FINE");
     }
+
 
 
 //    public void getDataFromApi(String exchange) throws IOException {
@@ -108,10 +120,10 @@ public class MainController {
 //        in.close();
 
 //    }
-    
-     private static String getUrlContentsCMC(String theUrl) throws IOException {
-         // COINMARKTCAP IT HAS PRIVATE KEY TO ACCESS
-        URL uri = new URL("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
+
+
+    private static String getUrlContents(String theUrl) throws IOException {
+        URL uri = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
         URLConnection ec = uri.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 ec.getInputStream(), "UTF-8"));
@@ -125,9 +137,8 @@ public class MainController {
         return a.toString();
 
     }
-
-    private static String getUrlContents(String theUrl) throws IOException {
-        URL uri = new URL("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
+    private static String getUrlContentsCMC(String theUrl) throws IOException {
+        URL uri = new URL("https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest");
         URLConnection ec = uri.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 ec.getInputStream(), "UTF-8"));
@@ -167,6 +178,21 @@ public class MainController {
         }
 
         return response_content;
+    }
+    private static String getUrlContentsETH(String theUrl) throws IOException {
+        URL uri = new URL("https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT");
+        URLConnection ec = uri.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(
+                ec.getInputStream(), "UTF-8"));
+        String inputLine;
+        StringBuilder a = new StringBuilder();
+        while ((inputLine = in.readLine()) != null)
+            a.append(inputLine);
+        in.close();
+
+        System.out.println(a.toString());
+        return a.toString();
+
     }
 
 
