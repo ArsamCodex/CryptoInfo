@@ -20,6 +20,8 @@ import java.util.List;
 
 public class JavaExample {
 
+
+      //copied from coinmatketcap as java example
     static  String apiKey = "b4666977-739e-47bd-8ad6-02ad69bfd85f";
 
     public static void main() {
